@@ -1,0 +1,28 @@
+To use this framework, you will need to install SDL 1.3, SDL_ttf and SDL_image.
+
+Installation of SDL 1.3 (note: OpenGL renderer needs OpenGL libraries (e.g. mesa on Ubuntu)):
+1) hg clone http://hg.libsdl.org/SDL
+2) autogen.sh
+3) ./configure
+4) make
+5) make install
+
+Installation of SDL_ttf (this also requires FreeType 2.0):
+1) hg clone http://hg.libsdl.org/SDL_ttf/
+2) autogen.sh
+3) ./configure
+4) make
+5) make install
+
+Installation of SDL_image (note: PNG loading also requires libpng and libz):
+1) hg clone http://hg.libsdl.org/SDL_image/
+2) autogen.sh
+3) ./configure
+4) make
+5) make install
+
+Installation of Go2D:
+1) gomake install
+
+Usage:
+Check out /skeleton and ./test for examples. A detailed documentation will follow soon.
