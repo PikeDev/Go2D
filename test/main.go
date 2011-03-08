@@ -26,6 +26,8 @@ func draw() {
 	image.Draw(10, 200)
 	
 	arial16.DrawText("Testing...", 200, 10)
+	
+	go2d.DrawFillRect(go2d.NewRect(350, 200, 100, 100), 255, 100, 0, 255)
 } 
 
 func mouseUp(x, y int16) {
