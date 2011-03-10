@@ -1,7 +1,7 @@
 To use this framework, you will need to install SDL 1.3, SDL_ttf and SDL_image.
 
 ###Windows Users - read this!###
-If you don't want to spend time compiling SDL, but just start on your game right away, you can download go2d_windows_bin.zip for compiled versions of all needed DLL files and the two Go libraries
+If you don't want to spend time compiling SDL, but just start on your game right away, you can download go2d_windows_bin.zip (click on Downloads on the github page) for compiled versions of all needed DLL files and the two Go libraries
 ################################
 
 Installation of SDL 1.3 (note: OpenGL renderer needs OpenGL libraries (e.g. mesa on Ubuntu)):
