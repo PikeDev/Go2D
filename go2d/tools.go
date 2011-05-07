@@ -29,8 +29,8 @@ func GetPath() string {
 
 func DrawFillRect(_rect *Rect, _red, _green, _blue, _alpha uint8) {
 	sdl.SetRenderDrawColor(g_game.renderer, _red, _green, _blue, _alpha)
-	sdl.SetRenderDrawBlendMode(g_game.renderer, sdl.SDL_BLENDMODE_BLEND)
+	sdl.SetRenderDrawBlendMode(g_game.renderer, sdl.BLENDMODE_BLEND)
 	sdl.RenderFillRect(g_game.renderer, *_rect.toSDL())
-	sdl.SetRenderDrawBlendMode(g_game.renderer, sdl.SDL_BLENDMODE_NONE)
+	sdl.SetRenderDrawBlendMode(g_game.renderer, sdl.BLENDMODE_NONE)
 	sdl.SetRenderDrawColor(g_game.renderer, 0, 0, 0, 255)
 }

@@ -14,7 +14,7 @@ type Image struct {
 
 //Load image from file
 func NewImage(_file string) *Image {
-	image := &Image{blendmode: sdl.SDL_BLENDMODE_BLEND}
+	image := &Image{blendmode: sdl.BLENDMODE_BLEND}
 	addResource(image)
 
 	image.surface = sdl.LoadImage(GetPath() + _file)
@@ -26,7 +26,7 @@ func NewImage(_file string) *Image {
 //Internal: load image from sdl surface
 func newImageFromSurface(_surface *sdl.Surface) *Image {
 	image := &Image{surface: _surface,
-		blendmode: sdl.SDL_BLENDMODE_BLEND}
+		blendmode: sdl.BLENDMODE_BLEND}
 	addResource(image)
 	image.reload()
 	return image

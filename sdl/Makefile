@@ -11,8 +11,6 @@ CGOFILES=\
 	image.go\
 	renderer.go\
 	event.go\
-	
-GOFILES=\
 	const.go\
 
 CGO_CFLAGS=`sdl-config --cflags`
