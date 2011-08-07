@@ -1,7 +1,5 @@
 package gui
 
-import . "go2d"
-
 type IElement interface {
 	Draw(drawArea *Rect)
 	DrawElement(drawArea *Rect)

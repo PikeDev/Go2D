@@ -1,7 +1,5 @@
 package gui
 
-import . "go2d"
-
 type IContainer interface {
 	Children() []IElement
 }
