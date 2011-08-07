@@ -3,6 +3,7 @@ package go2d
 import (
 	"fmt"
 	"sdl"
+	"gui"
 )
 
 //Instance
@@ -16,11 +17,13 @@ type Game struct {
 	updateFun func()
 	drawFun   func()
 
-	mouseupFun   func(int16, int16)
-	mousedownFun func(int16, int16)
-	mousemoveFun func(int16, int16)
-	keydownFun   func(int)
-	textinputFun func(uint8)
+	mouseupFun   	func(int16, int16)
+	mousedownFun 	func(int16, int16)
+	mousemoveFun 	func(int16, int16)
+	mousescrollFun  func(int)
+	keydownFun   	func(int)
+	keyupFun   		func(int)
+	textinputFun	func(uint8)
 
 	title         string
 	width, height int
@@ -28,6 +31,8 @@ type Game struct {
 
 	window   *sdl.Window
 	renderer *sdl.Renderer
+	
+	guiManager *gui.Manager
 }
 
 //Create a new Game instance
@@ -38,6 +43,10 @@ func NewGame(_title string) (game *Game) {
 
 	g_game = game
 	return game
+}
+
+func (game *Game) InitGUI(x, y, width, height int) {
+	game.guiManager = gui.NewManager(x, y, width, height)
 }
 
 func (game *Game) SetInitFun(_init func()) {
@@ -64,8 +73,16 @@ func (game *Game) SetMouseMoveFun(_mousemove func(int16, int16)) {
 	game.mousemoveFun = _mousemove
 }
 
+func (game *Game) SetMouseScrollFun(_mousescroll func(int)) {
+	game.mousescrollFun = _mousescroll
+}
+
 func (game *Game) SetKeyDownFun(_keydown func(int)) {
 	game.keydownFun = _keydown
+}
+
+func (game *Game) SetKeyUpFun(_keyup func(int)) {
+	game.keyupFun = _keyup
 }
 
 func (game *Game) SetTextInputFun(_textinput func(uint8)) {
@@ -136,6 +153,10 @@ func (game *Game) draw() {
 	//Call user-defined draw function
 	if game.drawFun != nil {
 		game.drawFun()
+	}
+	
+	if game.guiManager != nil {
+		game.guiManager.Draw()
 	}
 
 	//Render everything

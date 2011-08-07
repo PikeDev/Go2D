@@ -8,8 +8,10 @@ type IElement interface {
 	MouseDown(x, y int)
 	MouseUp(x, y int)
 	MouseMove(x, y int)
+	MouseScroll(direction int)
 	KeyDown(button int)
 	KeyUp(button int)
+	TextInput(character uint8)
 	Rect() *Rect
 	Visible() bool
 }

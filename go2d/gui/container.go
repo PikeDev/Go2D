@@ -53,6 +53,14 @@ func (c *Container) MouseMove(x, y int) {
 	}
 }
 
+func (c *Container) MouseScroll(direction int) {
+	for _, child := range c.Children() {
+		if child.Visible() {
+			child.MouseScroll(direction)
+		}
+	}
+}
+
 func (c *Container) KeyDown(button int) {
 	for _, child := range c.Children() {
 		if child.Visible() {
@@ -65,6 +73,14 @@ func (c *Container) KeyUp(button int) {
 	for _, child := range c.Children() {
 		if child.Visible() {
 			child.KeyUp(button)
+		}
+	}
+}
+
+func (c *Container) TextInput(character uint8) {
+	for _, child := range c.Children() {
+		if child.Visible() {
+			child.TextInput(character)
 		}
 	}
 }

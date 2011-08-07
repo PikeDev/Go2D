@@ -1,16 +1,16 @@
 package gui
 
-import . "go2d"
-
 type Manager struct {
 	root *Window
 }
 
-func NewManager(x, y, width, height int) {
-	
+func NewManager(x, y, width, height int) *Manager {
+	manager := &Manager{}
+	manager.root = NewWindow(x, y, width, height)
+	return manager
 }
 
-func (m *Manager) Draw(drawArea *Rect) {
+func (m *Manager) Draw() {
 	m.root.Draw(m.root.Rect())
 }
 
@@ -31,6 +31,11 @@ func (m *Manager) MouseMove(x, y int) {
 		m.MouseMove(x, y)
 	}
 }
+func (m *Manager) MouseScroll(direction int) {
+	if m.root != nil {
+		m.MouseScroll(direction)
+	}
+}
 
 func (m *Manager) KeyDown(button int) {
 	if m.root != nil {
@@ -41,5 +46,11 @@ func (m *Manager) KeyDown(button int) {
 func (m *Manager) KeyUp(button int) {
 	if m.root != nil {
 		m.KeyUp(button)
+	}
+}
+
+func (m *Manager) TextInput(character uint8) {
+	if m.root != nil {
+		m.TextInput(character)
 	}
 }
