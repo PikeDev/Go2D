@@ -8,6 +8,7 @@ TARG=go2d
 	
 GOFILES=\
 	*.go\
+	gui/*.go\
 
 CLEANFILES+=go2d
 

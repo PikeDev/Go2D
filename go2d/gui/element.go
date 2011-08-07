@@ -1,4 +1,4 @@
-package gui
+package go2d
 
 type IElement interface {
 	Draw(drawArea *Rect)

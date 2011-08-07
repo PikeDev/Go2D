@@ -3,7 +3,6 @@ package go2d
 import (
 	"fmt"
 	"sdl"
-	"gui"
 )
 
 //Instance
@@ -32,7 +31,7 @@ type Game struct {
 	window   *sdl.Window
 	renderer *sdl.Renderer
 	
-	guiManager *gui.Manager
+	guiManager *GUIManager
 }
 
 //Create a new Game instance
@@ -46,7 +45,7 @@ func NewGame(_title string) (game *Game) {
 }
 
 func (game *Game) InitGUI(x, y, width, height int) {
-	game.guiManager = gui.NewManager(x, y, width, height)
+	game.guiManager = NewGUIManager(x, y, width, height)
 }
 
 func (game *Game) SetInitFun(_init func()) {

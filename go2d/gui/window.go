@@ -1,4 +1,4 @@
-package gui
+package go2d
 
 type Window struct {
 	Container
