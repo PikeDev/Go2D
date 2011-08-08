@@ -4,8 +4,7 @@ type Window struct {
 	Container
 
 	title string
-	root IElement
-	
+
 	popups []*Window
 }
 

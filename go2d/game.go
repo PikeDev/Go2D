@@ -44,8 +44,9 @@ func NewGame(_title string) (game *Game) {
 	return game
 }
 
-func (game *Game) InitGUI(x, y, width, height int) {
-	game.guiManager = NewGUIManager(x, y, width, height)
+func (game *Game) InitGUI(x, y, width, height int, defaultFont *Font) *Window {
+	game.guiManager = NewGUIManager(x, y, width, height, defaultFont)
+	return game.guiManager.Root()
 }
 
 func (game *Game) SetInitFun(_init func()) {
