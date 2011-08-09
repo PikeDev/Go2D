@@ -25,7 +25,9 @@ func start() {
 	//Initialize the GUI system (use whole window area)
 	g_window = g_game.InitGUI(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, arial)
 
-	
+	//Set up some elements
+	label := go2d.NewLabel(10, 10, "This is a test label")
+	g_window.AddChild(label)
 }
 
 func update() {
