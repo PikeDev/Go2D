@@ -37,6 +37,8 @@ func (c *Container) Draw(drawArea *Rect) {
 	childDrawArea := NewRectFrom(drawArea)
 	childDrawArea.X += c.Rect().X
 	childDrawArea.Y += c.Rect().Y
+	childDrawArea.Width = c.Rect().Width
+	childDrawArea.Height = c.Rect().Height
 	
 	for _, child := range c.Children() {
 		if child.Visible() {

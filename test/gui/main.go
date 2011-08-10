@@ -26,9 +26,17 @@ func start() {
 	g_window = g_game.InitGUI(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, arial)
 
 	//Set up some elements
+	
+	//A panel
 	panel := go2d.NewPanel(20, 20, 200, 200)
 	panel.SetBackgroundColor(80, 80, 255)
 	
+	//Another panel in the panel that gets clipped
+	innerPanel := go2d.NewPanel(180, 180, 50,50)
+	innerPanel.SetBackgroundColor(255, 80, 80)
+	panel.AddChild(innerPanel)
+	
+	//A label
 	label := go2d.NewLabel(10, 10, "This is a test label")
 	panel.AddChild(label)
 	

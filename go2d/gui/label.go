@@ -45,6 +45,6 @@ func (l *Label) Draw(drawArea *Rect) {
 	if l.font != nil {
 		l.font.SetStyle(l.bold, l.italic, l.underlined)
 		l.font.SetColor(l.foregroundColor.R, l.foregroundColor.G, l.foregroundColor.B)
-		l.font.DrawText(l.caption, drawArea.X + l.Rect().X, drawArea.Y + l.Rect().Y)
+		l.font.DrawTextInRect(l.caption, drawArea.X + l.Rect().X, drawArea.Y + l.Rect().Y, drawArea)
 	}
 }

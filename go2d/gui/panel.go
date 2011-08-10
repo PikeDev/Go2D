@@ -26,7 +26,10 @@ func (p *Panel) SetBackgroundColor(red, green, blue int) {
 
 func (p *Panel) Draw(drawArea *Rect) {
 	if p.backgroundColor != nil {
-		DrawFillRect(p.Rect(), p.backgroundColor.R, p.backgroundColor.G, p.backgroundColor.B, 255)
+		realRect := NewRect(p.Rect().X+drawArea.X, p.Rect().Y+drawArea.Y, p.Rect().Width, p.Rect().Height)
+		inRect := realRect.Intersection(drawArea)
+
+		DrawFillRect(inRect, p.backgroundColor.R, p.backgroundColor.G, p.backgroundColor.B, 255)
 	}
 	
 	p.Container.Draw(drawArea)
