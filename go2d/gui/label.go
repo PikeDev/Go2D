@@ -15,7 +15,7 @@ func NewLabel(x, y int, caption string) *Label {
 	label.Init(x, y, 0, 0)
 	
 	label.SetFont(g_game.guiManager.defaultFont)
-	label.foregroundColor = &sdl.Color{uint8(255), uint8(255), uint8(255), uint8(255)}
+	label.fontColor = &sdl.Color{uint8(255), uint8(255), uint8(255), uint8(255)}
 	
 	label.caption = caption
 	
@@ -44,7 +44,7 @@ func (l *Label) SetFont(font *Font) {
 func (l *Label) Draw(drawArea *Rect) {
 	if l.font != nil {
 		l.font.SetStyle(l.bold, l.italic, l.underlined)
-		l.font.SetColor(l.foregroundColor.R, l.foregroundColor.G, l.foregroundColor.B)
+		l.font.SetColor(l.fontColor.R, l.fontColor.G, l.fontColor.B)
 		l.font.DrawTextInRect(l.caption, drawArea.X + l.Rect().X, drawArea.Y + l.Rect().Y, drawArea)
 	}
 }

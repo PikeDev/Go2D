@@ -40,6 +40,15 @@ func start() {
 	label := go2d.NewLabel(10, 10, "This is a test label")
 	panel.AddChild(label)
 	
+	//A button
+	button := go2d.NewButton(10, 40, 100, 30, "Click here")
+	button.SetFontColor(80, 80, 80)
+	button.SetBackgroundColor(80, 255, 80)
+	button.SetOnClickListener(func(x, y int) {
+		println("Button clicked!")
+	})
+	panel.AddChild(button)
+	
 	g_window.AddChild(panel)
 }
 
