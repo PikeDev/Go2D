@@ -2,6 +2,7 @@ package go2d
 
 type IContainer interface {
 	Children() []IElement
+	FillFocusList(elements *[]IElement)
 }
 
 type Container struct {
@@ -14,12 +15,26 @@ func (c *Container) Init(x, y, width, height int) {
 	c.children = make([]IElement, 0)
 }
 
+func (c *Container) FillFocusList(elements *[]IElement) {
+	for _, child := range c.children {
+		switch childType := child.(type) {
+			case IContainer:
+				childType.FillFocusList(elements)
+				
+			default:
+				if child.Focusable() {
+					*elements = append(*elements, child)
+				}
+		}
+	}
+}
+
 func (c *Container) Children() []IElement {
 	return c.children
 }
 
 func (c *Container) AddChild(element IElement) {
-	element.SetParent(element)
+	element.SetParent(c)
 	c.children = append(c.children, element)
 }
 

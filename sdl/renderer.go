@@ -118,8 +118,16 @@ func RenderPresent(_renderer *Renderer) {
 	C.SDL_RenderPresent(_renderer.Get())
 }
 
-func RenderFillRect(_renderer *Renderer, _rect Rect)  {
+func RenderFillRect(_renderer *Renderer, _rect Rect) {
 	C.SDL_RenderFillRect(_renderer.Get(), (*C.SDL_Rect)(cast(&_rect)))
+}
+
+func RenderDrawRect(_renderer *Renderer, _rect Rect) {
+	C.SDL_RenderDrawRect(_renderer.Get(), (*C.SDL_Rect)(cast(&_rect)))
+}
+
+func RenderDrawLine(_renderer *Renderer, _x1, _y1, _x2, _y2 int) {
+	C.SDL_RenderDrawLine(_renderer.Get(), C.int(_x1), C.int(_y1), C.int(_x2), C.int(_y2)) 
 }
 
 func SetRenderDrawColor(_renderer *Renderer, _r uint8, _g uint8, _b uint8, _a uint8) {

@@ -49,6 +49,21 @@ func start() {
 	})
 	panel.AddChild(button)
 	
+	//A textfield
+	textfield := go2d.NewTextField(10, 80, 150, 30)
+	textfield.SetFontColor(0, 0, 0)
+	textfield.SetBackgroundColor(255, 255, 255)
+	textfield.SetBorderColor(0, 0, 0)
+	panel.AddChild(textfield)
+	
+	//A password textfield
+	password := go2d.NewTextField(10, 120, 150, 30)
+	password.SetPassword(true)
+	password.SetFontColor(0, 0, 0)
+	password.SetBackgroundColor(255, 255, 255)
+	password.SetBorderColor(0, 0, 0)
+	panel.AddChild(password)
+	
 	g_window.AddChild(panel)
 }
 

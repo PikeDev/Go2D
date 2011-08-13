@@ -64,7 +64,7 @@ func (b *Button) Draw(drawArea *Rect) {
 		captionY := b.Rect().Y+((b.Rect().Height/2)-(b.font.GetStringHeight()/2));
 		b.font.SetStyle(b.bold, b.italic, b.underlined)
 		b.font.SetColor(b.fontColor.R, b.fontColor.G, b.fontColor.B)
-		b.font.DrawTextInRect(b.caption, drawArea.X + captionX, drawArea.Y + captionY, drawArea)
+		b.font.DrawTextInRect(b.caption, drawArea.X + captionX, drawArea.Y + captionY, inRect)
 	}
 }
 

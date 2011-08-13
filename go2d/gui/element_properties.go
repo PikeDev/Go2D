@@ -20,6 +20,24 @@ func (b *BackgroundColor) SetBackgroundColor(red, green, blue int) {
 	}
 }
 
+type BorderColor struct {
+ 	borderColor *sdl.Color
+}
+
+func (b *BorderColor) BorderColor() *sdl.Color {
+	return b.borderColor
+}
+
+func (b *BorderColor) SetBorderColor(red, green, blue int) {
+	if b.borderColor == nil {
+		b.borderColor = &sdl.Color{uint8(red), uint8(green), uint8(blue), uint8(255)}
+	} else {
+		b.borderColor.R = uint8(red)
+		b.borderColor.G = uint8(green)
+		b.borderColor.B = uint8(blue)
+	}
+}
+
 type ElementImage struct {
 	image *Image
 	hoverImage *Image

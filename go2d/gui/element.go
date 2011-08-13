@@ -13,12 +13,18 @@ type IElement interface {
 	Visible() bool
 	Parent() IElement
 	SetParent(element IElement)
+	Focus() bool
+	SetFocus(focus bool)
+	Focusable() bool
+	Window() *Window
 }
 
 type Element struct {
 	rect *Rect
 	visible bool
 	parent IElement
+	focus bool
+	focusable bool
 }
 
 func (e *Element) Init(x, y, width, height int) {
@@ -64,4 +70,26 @@ func (e *Element) Parent() IElement {
 
 func (e *Element) SetParent(element IElement) {
 	e.parent = element
+}
+
+func (e *Element) Focus() bool {
+	return e.focus
+}
+
+func (e *Element) SetFocus(focus bool) {
+	e.focus = focus
+}
+
+func (e *Element) Focusable() bool {
+	return e.focusable
+}
+
+func (e *Element) Window() *Window {
+	if e.Parent() != nil {
+		if window, is_window := e.Parent().(*Window); is_window {
+			return window
+		}
+		return e.Parent().Window()
+	} 
+	return nil
 }

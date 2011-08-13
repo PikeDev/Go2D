@@ -34,3 +34,21 @@ func DrawFillRect(_rect *Rect, _red, _green, _blue, _alpha uint8) {
 	sdl.SetRenderDrawBlendMode(g_game.renderer, sdl.BLENDMODE_NONE)
 	sdl.SetRenderDrawColor(g_game.renderer, 0, 0, 0, 255)
 }
+
+func DrawRect(_rect *Rect, _red, _green, _blue, _alpha uint8) {
+	sdl.SetRenderDrawColor(g_game.renderer, _red, _green, _blue, _alpha)
+	sdl.SetRenderDrawBlendMode(g_game.renderer, sdl.BLENDMODE_BLEND)
+	sdl.RenderDrawRect(g_game.renderer, *_rect.toSDL())
+	sdl.SetRenderDrawBlendMode(g_game.renderer, sdl.BLENDMODE_NONE)
+	sdl.SetRenderDrawColor(g_game.renderer, 0, 0, 0, 255)
+}
+
+func DrawLine(_red, _green, _blue, _alpha uint8, _x1, _y1, _x2, _y2 int) {
+	sdl.SetRenderDrawColor(g_game.renderer, _red, _green, _blue, _alpha)
+	sdl.SetRenderDrawBlendMode(g_game.renderer, sdl.BLENDMODE_BLEND)
+	sdl.RenderDrawLine(g_game.renderer, _x1, _y1, _x2, _y2)
+	sdl.SetRenderDrawBlendMode(g_game.renderer, sdl.BLENDMODE_NONE)
+	sdl.SetRenderDrawColor(g_game.renderer, 0, 0, 0, 255)
+}
+
+
