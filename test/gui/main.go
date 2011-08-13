@@ -65,6 +65,19 @@ func start() {
 	panel.AddChild(password)
 	
 	g_window.AddChild(panel)
+	
+	//A customized button
+	customButton := go2d.NewButton(20, 240, 186, 52, "")
+	customButton.SetImage(go2d.NewImage("button_normal.png"))
+	customButton.SetHoverImage(go2d.NewImage("button_hover.png"))
+	customButton.SetMouseDownImage(go2d.NewImage("button_down.png"))
+	customButton.SetOnClickListener(CustomButtonOnClick)
+	g_window.AddChild(customButton)
+	
+}
+
+func CustomButtonOnClick(x, y int)  {
+	println("Custom button clicked!")
 }
 
 func update() {
