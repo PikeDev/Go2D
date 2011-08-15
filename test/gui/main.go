@@ -2,6 +2,7 @@
 
 import (
 	"go2d"
+	"fmt"
 )
 
 //Constants
@@ -74,6 +75,12 @@ func start() {
 	customButton.SetOnClickListener(CustomButtonOnClick)
 	g_window.AddChild(customButton)
 	
+	//A scrollbar
+	scrollBar := go2d.NewScrollbar(300, 20, 20, 140, go2d.SCROLLBAR_VERTICAL)
+	scrollBar.SetOnValueChangeListener(func(value int) {
+		fmt.Printf("Scrollbar value: %d\n", value)
+	})
+	g_window.AddChild(scrollBar)
 }
 
 func CustomButtonOnClick(x, y int)  {

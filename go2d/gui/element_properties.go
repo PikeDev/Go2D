@@ -67,3 +67,15 @@ func (e *ElementImage) MouseDownImage() *Image {
 func (e *ElementImage) SetMouseDownImage(image *Image) {
 	e.mouseDownImage = image
 }
+
+type Value struct {
+ 	value int
+}
+
+func (v *Value) Value() int {
+	return v.value
+}
+
+func (v *Value) SetValue(value int) {
+	v.value = value
+}
