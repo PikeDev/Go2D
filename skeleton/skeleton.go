@@ -6,7 +6,7 @@ func start() {
 	//load resources here
 }
 
-func update() {
+func update(dt uint32) {
 	//game mechanics here
 	//this is called every frame before the draw function
 }

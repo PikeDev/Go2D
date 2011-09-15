@@ -13,7 +13,7 @@ var g_running bool
 
 type Game struct {
 	initFun   func()
-	updateFun func()
+	updateFun func(dt uint32)
 	drawFun   func()
 
 	mouseupFun   	func(int16, int16)
@@ -53,7 +53,7 @@ func (game *Game) SetInitFun(_init func()) {
 	game.initFun = _init
 }
 
-func (game *Game) SetUpdateFun(_update func()) {
+func (game *Game) SetUpdateFun(_update func(dt uint32)) {
 	game.updateFun = _update
 }
 
@@ -138,10 +138,10 @@ func (game *Game) initialize() {
 }
 
 //Internal update function
-func (game *Game) update() {
+func (game *Game) update(dt uint32) {
 	//Call user-defined update function
 	if game.updateFun != nil {
-		game.updateFun()
+		game.updateFun(dt)
 	}
 }
 
@@ -193,6 +193,8 @@ func (game *Game) Run() {
 	//Initialize the game
 	game.initialize()
 
+	var dt, old_t, now_t uint32 = 0, 0, 0
+
 	for g_running {
 		//Check for events and handle them
 		for {
@@ -204,8 +206,13 @@ func (game *Game) Run() {
 			}
 		}
 
+		//Calculate time delta
+		now_t = sdl.GetTicks()
+		dt = now_t - old_t
+		old_t = now_t
+
 		//Update
-		game.update()
+		game.update(dt)
 
 		//Draw
 		game.draw()
