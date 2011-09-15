@@ -87,7 +87,7 @@ func CustomButtonOnClick(x, y int)  {
 	println("Custom button clicked!")
 }
 
-func update() {
+func update(dt uint32) {
 	//game mechanics here
 }
 
