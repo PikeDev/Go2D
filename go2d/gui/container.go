@@ -49,15 +49,17 @@ func (c *Container) RemoveChild(element IElement) {
 }
 
 func (c *Container) Draw(drawArea *Rect) {
-	childDrawArea := NewRectFrom(drawArea)
-	childDrawArea.X += c.Rect().X
-	childDrawArea.Y += c.Rect().Y
-	childDrawArea.Width = c.Rect().Width
-	childDrawArea.Height = c.Rect().Height
-	
-	for _, child := range c.Children() {
-		if child.Visible() {
-			child.Draw(childDrawArea) 
+	if c.InDrawArea(drawArea) {
+		childDrawArea := NewRectFrom(drawArea)
+		childDrawArea.X += c.Rect().X
+		childDrawArea.Y += c.Rect().Y
+		childDrawArea.Width = c.Rect().Width
+		childDrawArea.Height = c.Rect().Height
+		
+		for _, child := range c.Children() {
+			if child.Visible() && child.InDrawArea(drawArea) {
+				child.Draw(childDrawArea) 
+			}
 		}
 	}
 }

@@ -17,6 +17,7 @@ type IElement interface {
 	SetFocus(focus bool)
 	Focusable() bool
 	Window() *Window
+	InDrawArea(drawArea *Rect) bool
 }
 
 type Element struct {
@@ -92,4 +93,28 @@ func (e *Element) Window() *Window {
 		return e.Parent().Window()
 	} 
 	return nil
+}
+
+func (e *Element) InDrawArea(drawArea *Rect) bool {
+	if e.Rect() == nil || drawArea == nil {
+		return false
+	}
+	
+	if drawArea.Contains(e.Rect().X, e.Rect().Y) {
+		return true
+	}
+	
+	if drawArea.Contains(e.Rect().X+e.Rect().Width, e.Rect().Y) {
+		return true
+	}
+	
+	if drawArea.Contains(e.Rect().X, e.Rect().Y+e.Rect().Height) {
+		return true
+	}
+	
+	if drawArea.Contains(e.Rect().X+e.Rect().Width, e.Rect().Y+e.Rect().Height) {
+		return true
+	}
+	
+	return false
 }
