@@ -9,7 +9,8 @@ all: install
 DIRS=\
 	sdl\
 	go2d\
-	test\
+	test/basic\
+	test/gui\
 	skeleton\
 	
 clean.dirs: $(addsuffix .clean, $(DIRS))

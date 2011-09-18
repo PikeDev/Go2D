@@ -16,7 +16,7 @@ func start() {
 	arial16.SetColor(255, 255, 255)
 }
 
-func update() {
+func update(dt uint32) {
 	//game mechanics here
 }
 
